@@ -1,0 +1,52 @@
+---
+// Slide 07 — Prompts IA vue d'ensemble
+---
+<section>
+  <span class="slide-tag">Intelligence Artificielle</span>
+  <h2>5 Prompts <span class="accent">spécialisés</span></h2>
+  <table style="margin-top:16px;">
+    <thead>
+      <tr>
+        <th>Prompt</th>
+        <th>Déclencheur</th>
+        <th>Temp.</th>
+        <th>Sortie</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Évaluation live</strong></td>
+        <td>Après chaque message envoyé</td>
+        <td>—</td>
+        <td>move_quality, events, score_delta (JSON)</td>
+      </tr>
+      <tr>
+        <td><strong>Adversaire IA</strong></td>
+        <td>Tour du joueur IA (entraînement)</td>
+        <td><span class="green">0.9 / 0.7 / 0.4</span></td>
+        <td>Texte argumentatif libre</td>
+      </tr>
+      <tr>
+        <td><strong>Analyse post-débat</strong></td>
+        <td>Fin de partie</td>
+        <td><span class="blue">0.3</span></td>
+        <td>Scores, sophismes, biais, forces (JSON)</td>
+      </tr>
+      <tr>
+        <td><strong>Conseil (hint)</strong></td>
+        <td>Bouton "Conseil" pendant le débat</td>
+        <td>0.5</td>
+        <td>1-2 phrases d'amélioration</td>
+      </tr>
+      <tr>
+        <td><strong>Fact-checking</strong></td>
+        <td>À la demande en débat</td>
+        <td><span class="green">0.2</span></td>
+        <td>Vrai / Faux / Partiel + explication</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="font-size:.52em; color:#666; margin-top:18px; text-align:center;">
+    Tous centralisés dans <strong style="color:#aaa">src/lib/prompts.ts</strong> · Appels Groq encapsulés dans <strong style="color:#aaa">src/lib/groq.ts</strong> · Bilingues FR/EN
+  </p>
+</section>

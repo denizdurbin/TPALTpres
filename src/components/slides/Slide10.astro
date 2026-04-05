@@ -1,0 +1,43 @@
+---
+// Slide 10 — Adversaire IA
+---
+<section>
+  <span class="slide-tag">Prompts IA — Adversaire</span>
+  <h2>3 niveaux de <span class="accent">difficulté</span></h2>
+  <div class="cols-3" style="margin-top:20px;">
+    <div class="card green">
+      <h3>😌 Facile — temp. 0.9</h3>
+      <ul>
+        <li>Arguments peu structurés</li>
+        <li>Pas de contre-argumentation directe</li>
+        <li>Commet parfois des sophismes</li>
+        <li>Langage informel &amp; approximatif</li>
+      </ul>
+    </div>
+    <div class="card gold">
+      <h3>🤔 Moyen — temp. 0.7</h3>
+      <ul>
+        <li>Structure thèse + justification</li>
+        <li>Répond (parfois) à l'adversaire</li>
+        <li>Quelques raccourcis logiques</li>
+        <li>Langage semi-formel</li>
+      </ul>
+    </div>
+    <div class="card red">
+      <h3>😤 Fort — temp. 0.4</h3>
+      <ul>
+        <li>Rhétorique niveau expert</li>
+        <li>Contre-arguments directs systématiques</li>
+        <li>Expose les failles logiques adverses</li>
+        <li>Ne répète jamais, rigueur absolue</li>
+      </ul>
+    </div>
+  </div>
+  <div class="prompt-box" style="margin-top:18px;">
+    <span class="cmt">// Context injecté dans chaque prompt adversaire</span><br />
+    Sujet : <span class="str">"&#123;&#123; topic &#125;&#125;"</span><br />
+    Ta position : <span class="str">"&#123;&#123; position &#125;&#125;"</span>  ·  Position adverse : <span class="str">"&#123;&#123; opponentPosition &#125;&#125;"</span><br />
+    Historique des <span class="kw">N</span> derniers messages injecté pour cohérence contextuelle<br />
+    Limite : ~<span class="kw">216 mots</span> (MAX_AI_WORDS × 1.8)
+  </div>
+</section>

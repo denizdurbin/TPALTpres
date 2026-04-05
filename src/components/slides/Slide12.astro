@@ -1,0 +1,37 @@
+---
+// Slide 12 — Déploiement
+---
+<section>
+  <span class="slide-tag">Déploiement</span>
+  <h2>Infrastructure &amp; <span class="accent">mise en production</span></h2>
+  <div class="cols-2" style="margin-top:20px;">
+    <div class="card blue">
+      <h3>🐳 Docker — Configuration actuelle</h3>
+      <ul>
+        <li>Image base : <strong>Node 20</strong> + pnpm</li>
+        <li>Build inclut la génération Prisma client</li>
+        <li>Volume SQLite : <code>/data/dev.db</code></li>
+        <li>Port exposé : <strong>3000</strong></li>
+        <li><code>entrypoint.sh</code> : migrations puis démarrage</li>
+        <li><code>NODE_ENV=production</code></li>
+      </ul>
+    </div>
+    <div class="card gold">
+      <h3>⚙️ Variables d'environnement</h3>
+      <ul>
+        <li><code>DATABASE_URL</code> — chemin SQLite</li>
+        <li><code>LLM_API_URL</code> — endpoint Groq</li>
+        <li><code>LLM_MODEL</code> — llama-3.3-70b-versatile</li>
+        <li><code>LLM_API_KEY</code> — clé API Groq</li>
+        <li><code>DISABLE_IA</code> — mode stub sans clé</li>
+        <li><code>PORT</code> — 3000 par défaut</li>
+      </ul>
+    </div>
+  </div>
+  <div class="placeholder">
+    ☁️ Hébergement cloud, CI/CD &amp; pipeline de déploiement — <strong>à définir</strong><br />
+    <span style="font-size:.9em; margin-top:6px; display:block; color:#555;">
+      Pistes : Railway · Fly.io · VPS Docker · GitHub Actions
+    </span>
+  </div>
+</section>

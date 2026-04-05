@@ -1,0 +1,54 @@
+---
+// Slide 05 — Schéma DB
+---
+<section>
+  <span class="slide-tag">Architecture — Base de données</span>
+  <h2>Schéma <span class="accent">Prisma</span></h2>
+  <table style="margin-top:16px;">
+    <thead>
+      <tr>
+        <th>Modèle</th>
+        <th>Champs clés</th>
+        <th>Rôle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>User</strong></td>
+        <td>username, elo (défaut 1200), level, xp, wins, losses</td>
+        <td><span class="tag-pill">Joueur</span></td>
+      </tr>
+      <tr>
+        <td><strong>Debate</strong></td>
+        <td>topic, mode, status, player1/2, positions (POUR/CONTRE), winner</td>
+        <td><span class="tag-pill">Partie</span></td>
+      </tr>
+      <tr>
+        <td><strong>Message</strong></td>
+        <td>content, sender, debate, createdAt</td>
+        <td><span class="tag-pill">Chat</span></td>
+      </tr>
+      <tr>
+        <td><strong>Analysis</strong></td>
+        <td>overall, argumentQuality, rhetoric, logicalCoherence, factChecking, sophisms[], biases[], strengths[], weaknesses[], player1Score, player2Score</td>
+        <td><span class="tag-pill">Résultats IA</span></td>
+      </tr>
+      <tr>
+        <td><strong>UserAchievement</strong></td>
+        <td>userId, achievementId, unlockedAt</td>
+        <td><span class="tag-pill">Succès</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="flow" style="margin-top:20px; justify-content:center; gap:8px;">
+    <div class="flow-box" style="font-size:.55em;">Debate</div>
+    <div class="arrow" style="font-size:.9em;">→</div>
+    <div class="flow-box" style="font-size:.55em;">Messages[ ]</div>
+    <div class="arrow" style="font-size:.9em;">→</div>
+    <div class="flow-box hi" style="font-size:.55em;">Analysis (1-to-1)</div>
+    <div class="arrow" style="font-size:.9em;">→</div>
+    <div class="flow-box" style="font-size:.55em;">ELO mis à jour</div>
+    <div class="arrow" style="font-size:.9em;">→</div>
+    <div class="flow-box" style="font-size:.55em;">Achievements check</div>
+  </div>
+</section>

@@ -1,0 +1,214 @@
+---
+import Slide01 from '../components/slides/Slide01.astro';
+import Slide02 from '../components/slides/Slide02.astro';
+import Slide03 from '../components/slides/Slide03.astro';
+import Slide04 from '../components/slides/Slide04.astro';
+import Slide05 from '../components/slides/Slide05.astro';
+import Slide06 from '../components/slides/Slide06.astro';
+import Slide07 from '../components/slides/Slide07.astro';
+import Slide08 from '../components/slides/Slide08.astro';
+import Slide09 from '../components/slides/Slide09.astro';
+import Slide10 from '../components/slides/Slide10.astro';
+import Slide11 from '../components/slides/Slide11.astro';
+import Slide12 from '../components/slides/Slide12.astro';
+import Slide13 from '../components/slides/Slide13.astro';
+---
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TPALT — Présentation</title>
+  <style is:global>
+    @import 'reveal.js/dist/reset.css';
+    @import 'reveal.js/dist/reveal.css';
+    @import 'reveal.js/dist/theme/black.css';
+    @import 'reveal.js/plugin/highlight/monokai.css';
+
+    :root {
+      --accent:  #7c3aed;
+      --accent2: #a78bfa;
+      --gold:    #f59e0b;
+      --green:   #10b981;
+      --red:     #ef4444;
+      --blue:    #3b82f6;
+    }
+
+    .reveal .slides section { text-align: left; }
+    .reveal .slides section.center-slide { text-align: center; }
+
+    .reveal h1 {
+      font-size: 2.4em;
+      background: linear-gradient(135deg, #fff 30%, var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .reveal h2 { font-size: 1.5em; color: #e2e8f0; }
+    .reveal h3 {
+      font-size: 1.1em;
+      color: var(--accent2);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-bottom: .4em;
+    }
+
+    .accent { color: var(--accent2); }
+    .gold   { color: var(--gold); }
+    .green  { color: var(--green); }
+    .red    { color: var(--red); }
+    .blue   { color: var(--blue); }
+    .muted  { color: #888; }
+
+    .cols-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .cols-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+    .cols-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 12px; }
+
+    .card {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 10px;
+      padding: 16px 18px;
+      font-size: .72em;
+    }
+    .card.purple { border-color: var(--accent); }
+    .card.green  { border-color: var(--green); }
+    .card.gold   { border-color: var(--gold); }
+    .card.red    { border-color: var(--red); }
+    .card.blue   { border-color: var(--blue); }
+    .card h3 { font-size: .85em; margin-bottom: 8px; color: #aaa; }
+    .card ul { margin: 0; padding-left: 16px; }
+    .card ul li { margin-bottom: 5px; line-height: 1.4; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 20px; }
+    .chip {
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-size: .55em;
+      font-weight: 700;
+      border: 1px solid rgba(255,255,255,.2);
+      background: rgba(255,255,255,.05);
+    }
+    .chip.purple { border-color: var(--accent);  color: #c4b5fd; }
+    .chip.blue   { border-color: var(--blue);    color: #93c5fd; }
+    .chip.green  { border-color: var(--green);   color: #6ee7b7; }
+    .chip.gold   { border-color: var(--gold);    color: #fcd34d; }
+    .chip.red    { border-color: var(--red);     color: #fca5a5; }
+
+    .flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .flow-box {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: .6em;
+      text-align: center;
+    }
+    .flow-box.hi { border-color: var(--accent); background: rgba(124,58,237,.15); }
+    .flow-box small { display: block; color: #888; font-size: .85em; margin-top: 2px; }
+    .arrow { color: #555; font-size: 1.2em; }
+
+    .reveal table { font-size: .65em; width: 100%; border-collapse: collapse; }
+    .reveal table th {
+      color: #888; font-size: .85em; text-transform: uppercase;
+      letter-spacing: .07em; padding: 8px 12px;
+      border-bottom: 1px solid #333; text-align: left;
+    }
+    .reveal table td { padding: 9px 12px; border-bottom: 1px solid #222; }
+    .reveal table tr:last-child td { border-bottom: none; }
+
+    .tag-pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: .8em;
+      background: rgba(124,58,237,.25);
+      color: #c4b5fd;
+    }
+
+    .prompt-box {
+      background: #0d1117;
+      border: 1px solid #333;
+      border-left: 3px solid var(--accent);
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-family: 'Consolas', 'Fira Code', monospace;
+      font-size: .6em;
+      line-height: 1.7;
+      color: #c9d1d9;
+    }
+    .prompt-box .kw  { color: #ff7b72; }
+    .prompt-box .str { color: #a5d6ff; }
+    .prompt-box .cmt { color: #6e7681; }
+
+    .mq-row { display: flex; align-items: center; gap: 10px; margin-bottom: 7px; font-size: .65em; }
+    .mq-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .mq-label { min-width: 130px; font-weight: 600; }
+    .mq-bar-bg { flex: 1; height: 5px; background: #222; border-radius: 3px; overflow: hidden; }
+    .mq-bar { height: 100%; border-radius: 3px; }
+    .mq-delta { min-width: 44px; text-align: right; color: #888; }
+
+    .placeholder {
+      border: 2px dashed #333;
+      border-radius: 10px;
+      padding: 32px;
+      text-align: center;
+      color: #666;
+      font-size: .7em;
+      margin-top: 16px;
+    }
+
+    .slide-tag {
+      font-size: .45em;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .reveal .progress { color: var(--accent); }
+    .reveal .controls { color: var(--accent2); }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <Slide01 />
+      <Slide02 />
+      <Slide03 />
+      <Slide04 />
+      <Slide05 />
+      <Slide06 />
+      <Slide07 />
+      <Slide08 />
+      <Slide09 />
+      <Slide10 />
+      <Slide11 />
+      <Slide12 />
+      <Slide13 />
+    </div>
+  </div>
+
+  <script>
+    import Reveal from 'reveal.js';
+    import RevealNotes from 'reveal.js/plugin/notes/notes.esm.js';
+    import RevealHighlight from 'reveal.js/plugin/highlight/highlight.esm.js';
+
+    const deck = new Reveal({
+      hash: true,
+      slideNumber: 'c/t',
+      progress: true,
+      controls: true,
+      center: false,
+      transition: 'slide',
+      transitionSpeed: 'default',
+      backgroundTransition: 'fade',
+      plugins: [RevealNotes, RevealHighlight],
+    });
+    deck.initialize();
+  </script>
+</body>
+</html>

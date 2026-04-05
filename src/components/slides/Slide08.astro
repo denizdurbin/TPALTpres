@@ -1,0 +1,66 @@
+---
+// Slide 08 — Prompt évaluation live
+// Note: literal curly braces in text content use HTML entities &#123; &#125;
+---
+<section>
+  <span class="slide-tag">Prompts IA — Évaluation en direct</span>
+  <h2>Arbitrage <span class="accent">message par message</span></h2>
+  <div class="cols-2" style="margin-top:16px; align-items:start;">
+    <div class="prompt-box">
+      <span class="cmt">// EVALUATE_SYSTEM_PROMPT_FR (extrait)</span><br />
+      Tu es un arbitre expert en débat.<br />
+      Analyse le message et retourne :<br />
+      <br />
+      &#123;<br />
+      &nbsp;&nbsp;<span class="str">"move_quality"</span>: <span class="str">"brilliant|excellent|<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;good|inaccuracy|mistake|blunder"</span>,<br />
+      &nbsp;&nbsp;<span class="str">"events"</span>: [<br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&#123; type, severity, description &#125;<br />
+      &nbsp;&nbsp;],<br />
+      &nbsp;&nbsp;<span class="str">"score_delta"</span>: <span class="kw">-10..+10</span><br />
+      &#125;<br />
+      <br />
+      <span class="kw">RÈGLE</span> : position adverse défendue<br />
+      → <span class="str">wrong_side</span> = blunder, delta négatif.
+    </div>
+    <div>
+      <p style="font-size:.55em; color:#888; margin-bottom:12px;">TYPES D'ÉVÉNEMENTS DÉTECTÉS</p>
+      <div class="mq-row">
+        <div class="mq-dot" style="background:#10b981;"></div>
+        <div class="mq-label" style="color:#6ee7b7;">claim</div>
+        <div class="mq-bar-bg"><div class="mq-bar" style="width:80%;background:#10b981;"></div></div>
+        <div class="mq-delta">+5</div>
+      </div>
+      <div class="mq-row">
+        <div class="mq-dot" style="background:#3b82f6;"></div>
+        <div class="mq-label" style="color:#93c5fd;">evidence</div>
+        <div class="mq-bar-bg"><div class="mq-bar" style="width:95%;background:#3b82f6;"></div></div>
+        <div class="mq-delta">+8</div>
+      </div>
+      <div class="mq-row">
+        <div class="mq-dot" style="background:#f59e0b;"></div>
+        <div class="mq-label" style="color:#fcd34d;">counter_argument</div>
+        <div class="mq-bar-bg"><div class="mq-bar" style="width:70%;background:#f59e0b;"></div></div>
+        <div class="mq-delta">+6</div>
+      </div>
+      <div class="mq-row">
+        <div class="mq-dot" style="background:#ef4444;"></div>
+        <div class="mq-label" style="color:#fca5a5;">sophism</div>
+        <div class="mq-bar-bg"><div class="mq-bar" style="width:35%;background:#ef4444;"></div></div>
+        <div class="mq-delta">−6</div>
+      </div>
+      <div class="mq-row">
+        <div class="mq-dot" style="background:#dc2626;"></div>
+        <div class="mq-label" style="color:#fca5a5;">ad_hominem</div>
+        <div class="mq-bar-bg"><div class="mq-bar" style="width:20%;background:#dc2626;"></div></div>
+        <div class="mq-delta">−8</div>
+      </div>
+      <div class="mq-row">
+        <div class="mq-dot" style="background:#7f1d1d;"></div>
+        <div class="mq-label" style="color:#fca5a5;">wrong_side</div>
+        <div class="mq-bar-bg"><div class="mq-bar" style="width:10%;background:#7f1d1d;"></div></div>
+        <div class="mq-delta">−10</div>
+      </div>
+    </div>
+  </div>
+</section>
