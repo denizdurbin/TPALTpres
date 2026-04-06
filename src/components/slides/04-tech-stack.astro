@@ -3,7 +3,7 @@
 ---
 <section style="font-size:.85em;">
   <span class="slide-tag">Architecture</span>
-  <h2>Stack technique — <span class="accent">choix justifiés</span></h2>
+  <h2>Stack technique</h2>
 
   <table style="margin-top:14px;">
     <thead>
@@ -19,19 +19,19 @@
       </tr>
       <tr>
         <td><strong>WebSocket custom</strong> (<code>server.ts</code>)</td>
-        <td>Next.js ne supporte pas les connexions WS long-lived — serveur HTTP+WS sur le même port via <code>noServer: true</code></td>
+        <td>Next.js ne supporte pas les connexions WS long-lived donc serveur HTTP+WS sur le même port</td>
       </tr>
       <tr>
         <td><strong>Groq API</strong> · Llama 3.3 70B</td>
-        <td>Inférence &lt;1s → évaluation <em>pendant</em> le débat réalisable sans bloquer l'UX</td>
+        <td>Inférence &lt;1s → évaluation <em>pendant</em> le débat réalisable sans bloquer l'UX (et aussi parce que c'est gratuit)</td>
       </tr>
       <tr>
         <td><strong>Prisma</strong> + <strong>PostgreSQL</strong> (prod)</td>
-        <td>Migrations auto, schéma unique ; SQLite en dev via même interface Prisma</td>
+        <td>Gère les Migrations et le schéma. Permet d'avoie SQLite en dev via même interface Prisma</td>
       </tr>
       <tr>
         <td><strong>TypeScript 5</strong> strict</td>
-        <td>Typage bout en bout entre routes API et hooks client — détecte les désalignements de schéma à la compilation</td>
+        <td>Typage bout en bout entre routes API et hooks client </td>
       </tr>
     </tbody>
   </table>

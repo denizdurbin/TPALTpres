@@ -23,25 +23,12 @@ graph LR
       </pre>
       <div style="margin-top:12px; font-size:.52em; color:#888; line-height:1.8;">
         <span style="color:#a78bfa;">■</span> SQLite en dev · PostgreSQL en prod<br/>
-        <span style="color:#a78bfa;">■</span> Même schéma Prisma — seul <code>DATABASE_URL</code> change<br/>
         <span style="color:#f59e0b;">■</span> Redis : envisageable pour le cache leaderboard &amp; sessions
       </div>
     </div>
     <div>
       <p style="font-size:.5em; color:#888; text-transform:uppercase; letter-spacing:.1em; margin-bottom:6px;">Modèle de données</p>
       <pre class="mermaid" style="font-size:.65em;" set:html={erDiagram}></pre>
-      <div style="margin-top:10px;">
-        <p style="font-size:.5em; color:#888; text-transform:uppercase; letter-spacing:.1em; margin-bottom:4px;">Flow post-débat</p>
-        <div class="flow" style="font-size:.9em; flex-wrap:wrap; gap:4px;">
-          <div class="flow-box" style="font-size:.52em;">Fin de partie</div>
-          <div class="arrow">→</div>
-          <div class="flow-box hi" style="font-size:.52em;">Analyse Groq</div>
-          <div class="arrow">→</div>
-          <div class="flow-box" style="font-size:.52em;">ELO mis à jour</div>
-          <div class="arrow">→</div>
-          <div class="flow-box" style="font-size:.52em;">Achievements</div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
