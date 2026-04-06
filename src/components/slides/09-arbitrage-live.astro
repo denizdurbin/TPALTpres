@@ -1,0 +1,83 @@
+---
+// Slide 09 — Arbitrage live
+// Note: literal curly braces use HTML entities &#123; &#125;
+---
+<section>
+  <span class="slide-tag">Intelligence Artificielle — Évaluation en direct</span>
+  <h2>Arbitrage <span class="accent">message par message</span></h2>
+  <div class="cols-2" style="margin-top:8px; align-items:start;">
+    <div>
+      <div class="card red" style="margin-bottom:8px;">
+        <h3>⚠️ Règle prioritaire : wrong_side</h3>
+        Si un joueur défend la position de l'adversaire (intentionnellement ou non) :<br/>
+        <strong>→ <code>move_quality = "blunder"</code> · <code>delta</code> forcé négatif</strong><br/>
+        quelle que soit la qualité rhétorique du message
+      </div>
+      <div class="card blue" style="margin-bottom:8px;">
+        <h3>📐 Règle de portée (absolue)</h3>
+        Les événements ne concernent <strong>que</strong> le message courant —<br/>
+        <code>context_history</code> fourni uniquement pour la cohérence conversationnelle, jamais jugé
+      </div>
+      <div class="prompt-box" style="font-size:.47em;">
+        <span class="cmt">// Output JSON schématique</span><br/>
+        &#123;<br/>
+        &nbsp;&nbsp;<span class="str">"move_quality"</span>: <span class="str">"brilliant|excellent|good|inaccuracy|mistake|blunder"</span>,<br/>
+        &nbsp;&nbsp;<span class="str">"events"</span>: [ &#123; type, severity, description &#125; ],<br/>
+        &nbsp;&nbsp;<span class="str">"score_update"</span>: &#123; player, delta, new_score &#125;,<br/>
+        &nbsp;&nbsp;<span class="str">"live_metrics"</span>: &#123; clarity, logic, strategic_value &#125;<br/>
+        &#125;
+      </div>
+    </div>
+    <div>
+      <p style="font-size:.5em; color:#888; text-transform:uppercase; letter-spacing:.1em; margin-bottom:6px;">Types d'événements détectés</p>
+      <div class="mq-row">
+        <div class="mq-dot" style="background:#10b981;"></div>
+        <div class="mq-label" style="color:#6ee7b7;">claim</div>
+        <div class="mq-bar-bg"><div class="mq-bar" style="width:75%;background:#10b981;"></div></div>
+        <div class="mq-delta" style="color:#6ee7b7;">+4</div>
+      </div>
+      <div class="mq-row">
+        <div class="mq-dot" style="background:#3b82f6;"></div>
+        <div class="mq-label" style="color:#93c5fd;">evidence</div>
+        <div class="mq-bar-bg"><div class="mq-bar" style="width:95%;background:#3b82f6;"></div></div>
+        <div class="mq-delta" style="color:#93c5fd;">+8</div>
+      </div>
+      <div class="mq-row">
+        <div class="mq-dot" style="background:#a78bfa;"></div>
+        <div class="mq-label" style="color:#c4b5fd;">nuance</div>
+        <div class="mq-bar-bg"><div class="mq-bar" style="width:65%;background:#a78bfa;"></div></div>
+        <div class="mq-delta" style="color:#c4b5fd;">+5</div>
+      </div>
+      <div class="mq-row">
+        <div class="mq-dot" style="background:#f59e0b;"></div>
+        <div class="mq-label" style="color:#fcd34d;">counter_argument</div>
+        <div class="mq-bar-bg"><div class="mq-bar" style="width:80%;background:#f59e0b;"></div></div>
+        <div class="mq-delta" style="color:#fcd34d;">+6</div>
+      </div>
+      <div class="mq-row">
+        <div class="mq-dot" style="background:#ef4444;"></div>
+        <div class="mq-label" style="color:#fca5a5;">sophism</div>
+        <div class="mq-bar-bg"><div class="mq-bar" style="width:35%;background:#ef4444;"></div></div>
+        <div class="mq-delta" style="color:#fca5a5;">−6</div>
+      </div>
+      <div class="mq-row">
+        <div class="mq-dot" style="background:#dc2626;"></div>
+        <div class="mq-label" style="color:#fca5a5;">ad_hominem</div>
+        <div class="mq-bar-bg"><div class="mq-bar" style="width:20%;background:#dc2626;"></div></div>
+        <div class="mq-delta" style="color:#fca5a5;">−8</div>
+      </div>
+      <div class="mq-row">
+        <div class="mq-dot" style="background:#888;"></div>
+        <div class="mq-label" style="color:#aaa;">irrelevance / repetition</div>
+        <div class="mq-bar-bg"><div class="mq-bar" style="width:15%;background:#888;"></div></div>
+        <div class="mq-delta" style="color:#aaa;">−3</div>
+      </div>
+      <div class="mq-row">
+        <div class="mq-dot" style="background:#7f1d1d;"></div>
+        <div class="mq-label" style="color:#fca5a5;">wrong_side</div>
+        <div class="mq-bar-bg"><div class="mq-bar" style="width:10%;background:#7f1d1d;"></div></div>
+        <div class="mq-delta" style="color:#fca5a5;">−10</div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,46 @@
+---
+// Slide 04 — Stack technique (justifiée)
+---
+<section style="font-size:.85em;">
+  <span class="slide-tag">Architecture</span>
+  <h2>Stack technique — <span class="accent">choix justifiés</span></h2>
+
+  <table style="margin-top:14px;">
+    <thead>
+      <tr>
+        <th>Technologie</th>
+        <th>Pourquoi ce choix</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Next.js 15</strong> + App Router + React 19</td>
+        <td>SSR pour le dashboard, API Routes co-localisées, streaming natif</td>
+      </tr>
+      <tr>
+        <td><strong>WebSocket custom</strong> (<code>server.ts</code>)</td>
+        <td>Next.js ne supporte pas les connexions WS long-lived — serveur HTTP+WS sur le même port via <code>noServer: true</code></td>
+      </tr>
+      <tr>
+        <td><strong>Groq API</strong> · Llama 3.3 70B</td>
+        <td>Inférence &lt;1s → évaluation <em>pendant</em> le débat réalisable sans bloquer l'UX</td>
+      </tr>
+      <tr>
+        <td><strong>Prisma</strong> + <strong>PostgreSQL</strong> (prod)</td>
+        <td>Migrations auto, schéma unique ; SQLite en dev via même interface Prisma</td>
+      </tr>
+      <tr>
+        <td><strong>TypeScript 5</strong> strict</td>
+        <td>Typage bout en bout entre routes API et hooks client — détecte les désalignements de schéma à la compilation</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="chips" style="margin-top:18px;">
+    <span class="chip">TailwindCSS 4</span>
+    <span class="chip">TanStack Query 5</span>
+    <span class="chip">Docker · Node 20</span>
+    <span class="chip">pnpm · ESLint 9</span>
+    <span class="chip">i18n FR / EN</span>
+  </div>
+</section>

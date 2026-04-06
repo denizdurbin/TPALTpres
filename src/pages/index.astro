@@ -161,6 +161,10 @@ const slideModules = Object.values(
 
     .reveal .progress { color: var(--accent); }
     .reveal .controls { color: var(--accent2); }
+
+    /* Mermaid — transparent background on dark slides */
+    pre.mermaid { background: transparent !important; margin: 0; }
+    pre.mermaid svg { background: transparent !important; max-width: 100%; }
   </style>
 </head>
 <body>
@@ -186,6 +190,7 @@ const slideModules = Object.values(
       backgroundTransition: 'fade',
       plugins: [RevealNotes, RevealHighlight],
     });
+
     deck.initialize();
   </script>
 </body>

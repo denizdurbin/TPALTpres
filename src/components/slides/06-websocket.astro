@@ -1,0 +1,50 @@
+---
+// Slide 06 — Serveur WebSocket
+---
+<section style="font-size:.85em;">
+  <span class="slide-tag">Temps réel</span>
+  <h2>Serveur <span class="accent">WebSocket</span> custom</h2>
+
+  <div class="cols-2" style="margin-top:12px; align-items:start;">
+    <div>
+      <p style="font-size:.52em; color:#888; text-transform:uppercase; letter-spacing:.1em; margin-bottom:8px;">3 décisions architecturales clés</p>
+      <div class="card blue" style="margin-bottom:8px;">
+        <h3>1. <code>noServer: true</code></h3>
+        WS monté sur le serveur HTTP Next.js existant — évite le conflit avec le HMR de Next.js sur le même port
+      </div>
+      <div class="card gold" style="margin-bottom:8px;">
+        <h3>2. Broadcast avant écriture DB</h3>
+        Le message est diffusé aux clients <strong>avant</strong> la persistance en base — priorité à la latence perçue sur la cohérence stricte ; l'erreur DB est loggée sans bloquer l'UX
+      </div>
+      <div class="card green">
+        <h3>3. Heartbeat ping/pong — 15s</h3>
+        Détection et terminaison des connexions zombies ; évite l'accumulation de clients stales en mémoire
+      </div>
+    </div>
+    <div>
+      <p style="font-size:.52em; color:#888; text-transform:uppercase; letter-spacing:.1em; margin-bottom:8px;">Protocole WebSocket</p>
+      <pre class="mermaid" style="font-size:.72em;">
+graph TD
+    join["join\n(debateId, userId)"]
+    message["message\n(content)"]
+    tc["turn_changed"]
+    nm["new_message"]
+    to["timeout\n(skip turn)"]
+    de["debate_ended"]
+
+    join --> message
+    message --> tc
+    tc --> nm
+    message --> to
+    nm --> de
+      </pre>
+      <div class="prompt-box" style="margin-top:10px; font-size:.48em;">
+        <span class="cmt">// server.ts — broadcast avant DB write</span><br/>
+        broadcast(room, &#123; type: <span class="str">"new_message"</span>, message &#125;);<br/>
+        <span class="cmt">// save asynchronously — don't block</span><br/>
+        db.message.create(&#123; data: &#123; ... &#125; &#125;)
+        &nbsp;&nbsp;.catch((e) =&gt; console.error(e));
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,49 @@
+---
+// Slide 07 — Matchmaking & ELO
+---
+<section style="font-size:.85em;">
+  <span class="slide-tag">Temps réel — Matchmaking</span>
+  <h2>ELO &amp; <span class="accent">fenêtre dynamique</span></h2>
+
+  <div class="cols-2" style="margin-top:12px; align-items:start;">
+    <div>
+      <div class="card purple" style="margin-bottom:10px;">
+        <h3>Calcul ELO (standard)</h3>
+        <div style="font-family: monospace; font-size:.9em; line-height:2; color:#e2e8f0;">
+          E<sub>1</sub> = 1 / (1 + 10<sup>(ELO<sub>2</sub> − ELO<sub>1</sub>) / 400</sup>)<br/>
+          ELO<sub>1</sub>' = max(100, round(ELO<sub>1</sub> + 32 × (score − E<sub>1</sub>)))<br/>
+        </div>
+        <div style="color:#888; font-size:.85em; margin-top:4px;">K = 32 · floor à 100 · ELO initial 1200</div>
+      </div>
+      <div class="card green">
+        <h3>Mode Casual</h3>
+        File FIFO — pas de filtre ELO<br/>
+        <span class="green">+15</span> victoire · <span class="red">−10</span> défaite (asymétrique intentionnel)
+      </div>
+    </div>
+    <div>
+      <div class="card gold" style="margin-bottom:10px;">
+        <h3>Ranked — fenêtre dynamique</h3>
+        <p style="margin-bottom:8px; color:#888;">Résout le <em>starvation problem</em> pour les ratings extrêmes</p>
+        <table style="font-size:.85em; width:100%;">
+          <thead><tr><th>Attente</th><th>Fenêtre ELO</th></tr></thead>
+          <tbody>
+            <tr><td>0 s</td><td>± 150</td></tr>
+            <tr><td>10 s</td><td>± 200</td></tr>
+            <tr><td>20 s</td><td>± 250</td></tr>
+            <tr><td>…</td><td>max ± 500</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="prompt-box" style="font-size:.48em;">
+        <span class="cmt">// server.ts — fenêtre expansive</span><br/>
+        <span class="kw">const</span> window = Math.min(<br/>
+        &nbsp;&nbsp;MM_ELO_WINDOW_BASE<br/>
+        &nbsp;&nbsp;+ Math.floor(waitSecs / MM_ELO_WINDOW_EXPAND_SECS)<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;* MM_ELO_WINDOW_INCREMENT,<br/>
+        &nbsp;&nbsp;MM_ELO_WINDOW_MAX<br/>
+        ); <span class="cmt">// ±150 base, +50/10s, max ±500</span>
+      </div>
+    </div>
+  </div>
+</section>

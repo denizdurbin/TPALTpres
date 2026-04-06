@@ -1,0 +1,71 @@
+---
+// Slide 11 — Analyse post-débat (fusion sophismes + scoring)
+---
+<section style="font-size:.85em;">
+  <span class="slide-tag">Intelligence Artificielle — Analyse post-débat</span>
+  <h2>Bilan <span class="accent">complet</span> après la partie</h2>
+
+  <div class="cols-2" style="margin-top:12px; align-items:start;">
+    <div>
+      <p style="font-size:.52em; color:#888; text-transform:uppercase; letter-spacing:.1em; margin-bottom:8px;">5 critères d'évaluation</p>
+      <div class="mq-row">
+        <div class="mq-dot" style="background:#a78bfa;"></div>
+        <div class="mq-label" style="color:#c4b5fd; min-width:160px;">Qualité des arguments</div>
+        <div class="mq-bar-bg"><div class="mq-bar" style="width:85%;background:#a78bfa;"></div></div>
+      </div>
+      <div class="mq-row">
+        <div class="mq-dot" style="background:#3b82f6;"></div>
+        <div class="mq-label" style="color:#93c5fd; min-width:160px;">Style rhétorique</div>
+        <div class="mq-bar-bg"><div class="mq-bar" style="width:70%;background:#3b82f6;"></div></div>
+      </div>
+      <div class="mq-row">
+        <div class="mq-dot" style="background:#10b981;"></div>
+        <div class="mq-label" style="color:#6ee7b7; min-width:160px;">Cohérence logique</div>
+        <div class="mq-bar-bg"><div class="mq-bar" style="width:60%;background:#10b981;"></div></div>
+      </div>
+      <div class="mq-row">
+        <div class="mq-dot" style="background:#f59e0b;"></div>
+        <div class="mq-label" style="color:#fcd34d; min-width:160px;">Fact-checking</div>
+        <div class="mq-bar-bg"><div class="mq-bar" style="width:75%;background:#f59e0b;"></div></div>
+      </div>
+      <div class="mq-row" style="margin-top:4px; border-top:1px solid #333; padding-top:6px;">
+        <div class="mq-dot" style="background:#fff;"></div>
+        <div class="mq-label" style="color:#fff; min-width:160px; font-weight:700;">Score global</div>
+        <div class="mq-bar-bg"><div class="mq-bar" style="width:74%;background:#fff;"></div></div>
+        <div class="mq-delta" style="color:#fff; font-weight:700;">74</div>
+      </div>
+
+      <div style="margin-top:12px; font-size:.55em; color:#888;">
+        Scores individuels : <strong style="color:#ccc;">player1Score</strong> vs <strong style="color:#ccc;">player2Score</strong><br/>
+        Forces et faiblesses listées · Chaque sophisme avec <strong>contexte exact</strong> dans le débat
+      </div>
+    </div>
+    <div>
+      <p style="font-size:.52em; color:#888; text-transform:uppercase; letter-spacing:.1em; margin-bottom:8px;">Sophismes &amp; biais détectés</p>
+      <div style="display:flex; flex-wrap:wrap; gap:6px; font-size:.55em;">
+        <span class="chip red">Ad Hominem</span>
+        <span class="chip red">Homme de paille</span>
+        <span class="chip red">Pente glissante</span>
+        <span class="chip">Fausse dichotomie</span>
+        <span class="chip">Appel à l'autorité</span>
+        <span class="chip">Généralisation hâtive</span>
+        <span class="chip">Biais de confirmation</span>
+        <span class="chip">Hors-sujet</span>
+        <span class="chip">Répétition</span>
+      </div>
+      <div class="card" style="margin-top:10px;">
+        <h3>Format de retour</h3>
+        <ul>
+          <li><strong>name</strong> — nom normalisé du sophisme</li>
+          <li><strong>count</strong> — nombre d'occurrences dans le débat</li>
+          <li><strong>context</strong> — citation exacte ou contexte</li>
+        </ul>
+      </div>
+      <div class="card" style="margin-top:8px;">
+        <h3>Biais cognitifs</h3>
+        Détectés séparément des sophismes logiques —<br/>
+        ex. biais de confirmation, biais d'ancrage, effet Dunning-Kruger
+      </div>
+    </div>
+  </div>
+</section>

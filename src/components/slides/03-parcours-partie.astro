@@ -1,0 +1,35 @@
+---
+// Slide 03 — Parcours d'une partie
+---
+<section style="font-size:.85em;">
+  <span class="slide-tag">Concept</span>
+  <h2>Déroulé d'une <span class="accent">partie</span></h2>
+
+  <pre class="mermaid" style="margin-top:12px; font-size:.75em;">
+sequenceDiagram
+    participant J as Joueur
+    participant MM as Matchmaking
+    participant S as Serveur
+    participant IA as Groq / Llama
+
+    J->>MM: rejoint la file (mode + ELO)
+    MM-->>J: match trouvé → debateId
+
+    loop 12 tours (6/joueur · 90s)
+        J->>S: envoie un message
+        S->>IA: évalue le message
+        IA-->>S: move_quality + events + score_delta
+        S-->>J: score live mis à jour
+    end
+
+    S->>IA: analyse post-débat complète
+    IA-->>S: sophismes · scores · forces · faiblesses
+    S->>J: ELO mis à jour + achievements débloqués
+  </pre>
+
+  <div class="chips" style="margin-top:16px;">
+    <span class="chip green">Entraînement — IA, sans impact ELO</span>
+    <span class="chip blue">Casual — FIFO, ±15/−10</span>
+    <span class="chip gold">Classé — ELO dynamique, K=32</span>
+  </div>
+</section>
