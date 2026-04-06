@@ -1,17 +1,7 @@
 ---
-import Slide01 from '../components/slides/Slide01.astro';
-import Slide02 from '../components/slides/Slide02.astro';
-import Slide03 from '../components/slides/Slide03.astro';
-import Slide04 from '../components/slides/Slide04.astro';
-import Slide05 from '../components/slides/Slide05.astro';
-import Slide06 from '../components/slides/Slide06.astro';
-import Slide07 from '../components/slides/Slide07.astro';
-import Slide08 from '../components/slides/Slide08.astro';
-import Slide09 from '../components/slides/Slide09.astro';
-import Slide10 from '../components/slides/Slide10.astro';
-import Slide11 from '../components/slides/Slide11.astro';
-import Slide12 from '../components/slides/Slide12.astro';
-import Slide13 from '../components/slides/Slide13.astro';
+const slideModules = Object.values(
+	import.meta.glob<{ default: any }>("../components/slides/*.astro", { eager: true })
+);
 ---
 
 <!DOCTYPE html>
@@ -176,19 +166,7 @@ import Slide13 from '../components/slides/Slide13.astro';
 <body>
   <div class="reveal">
     <div class="slides">
-      <Slide01 />
-      <Slide02 />
-      <Slide03 />
-      <Slide04 />
-      <Slide05 />
-      <Slide06 />
-      <Slide07 />
-      <Slide08 />
-      <Slide09 />
-      <Slide10 />
-      <Slide11 />
-      <Slide12 />
-      <Slide13 />
+      {slideModules.map(({ default: Slide }) => <Slide />)}
     </div>
   </div>
 
