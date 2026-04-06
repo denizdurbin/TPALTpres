@@ -5,26 +5,19 @@
 <section>
   <span class="slide-tag">Prompts IA — Évaluation en direct</span>
   <h2>Arbitrage <span class="accent">message par message</span></h2>
-  <div class="cols-2" style="margin-top:16px; align-items:start;">
+  <div class="cols-2" style="margin-top:8px; align-items:start;">
     <div class="prompt-box">
       <span class="cmt">// EVALUATE_SYSTEM_PROMPT_FR (extrait)</span><br />
-      Tu es un arbitre expert en débat.<br />
-      Analyse le message et retourne :<br />
-      <br />
+      Tu es un arbitre expert en débat. Analyse le message et retourne :<br />
       &#123;<br />
-      &nbsp;&nbsp;<span class="str">"move_quality"</span>: <span class="str">"brilliant|excellent|<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;good|inaccuracy|mistake|blunder"</span>,<br />
-      &nbsp;&nbsp;<span class="str">"events"</span>: [<br />
-      &nbsp;&nbsp;&nbsp;&nbsp;&#123; type, severity, description &#125;<br />
-      &nbsp;&nbsp;],<br />
+      &nbsp;&nbsp;<span class="str">"move_quality"</span>: <span class="str">"brilliant|excellent|good|inaccuracy|mistake|blunder"</span>,<br />
+      &nbsp;&nbsp;<span class="str">"events"</span>: [ &#123; type, severity, description &#125; ],<br />
       &nbsp;&nbsp;<span class="str">"score_delta"</span>: <span class="kw">-10..+10</span><br />
       &#125;<br />
-      <br />
-      <span class="kw">RÈGLE</span> : position adverse défendue<br />
-      → <span class="str">wrong_side</span> = blunder, delta négatif.
+      <span class="kw">RÈGLE</span> : position adverse défendue → <span class="str">wrong_side</span> = blunder, delta négatif.
     </div>
     <div>
-      <p style="font-size:.55em; color:#888; margin-bottom:12px;">TYPES D'ÉVÉNEMENTS DÉTECTÉS</p>
+      <p style="font-size:.55em; color:#888; margin-bottom:6px;">TYPES D'ÉVÉNEMENTS DÉTECTÉS</p>
       <div class="mq-row">
         <div class="mq-dot" style="background:#10b981;"></div>
         <div class="mq-label" style="color:#6ee7b7;">claim</div>
