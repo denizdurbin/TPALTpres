@@ -1,16 +1,15 @@
 ---
-// Slide 08 — 5 prompts IA : vue d'ensemble
 ---
-<section>
+<section style="font-size:.82em;">
   <span class="slide-tag">Intelligence Artificielle</span>
   <h2>5 Prompts <span class="accent">spécialisés</span></h2>
-  <table style="margin-top:16px;">
+  <table style="margin-top:10px;">
     <thead>
       <tr>
         <th>Prompt</th>
         <th>Déclencheur</th>
         <th>Temp.</th>
-        <th>Justification</th>
+        <th>Pourquoi cette température</th>
         <th>Sortie</th>
       </tr>
     </thead>
@@ -18,41 +17,38 @@
       <tr>
         <td><strong>Évaluation live</strong></td>
         <td>Après chaque message</td>
-        <td>—</td>
-        <td>Déterminisme requis pour la cohérence des scores</td>
+        <td>0.1</td>
+        <td>Déterminisme → scores cohérents</td>
         <td><code>move_quality</code>, <code>events[]</code>, <code>score_delta</code></td>
       </tr>
       <tr>
         <td><strong>Adversaire IA</strong></td>
         <td>Tour IA (entraînement)</td>
         <td><span class="green">0.9 / 0.7 / 0.4</span></td>
-        <td>Température comme proxy de créativité/rigueur selon le niveau</td>
+        <td>Proxy de créativité vs rigueur selon le niveau</td>
         <td>Texte argumentatif libre</td>
       </tr>
       <tr>
         <td><strong>Analyse post-débat</strong></td>
         <td>Fin de partie</td>
         <td><span class="blue">0.3</span></td>
-        <td>Faible temp. = détection de sophismes stable et reproductible</td>
+        <td>Détection de sophismes stable et reproductible</td>
         <td>Scores, sophismes, biais, forces (JSON)</td>
       </tr>
       <tr>
         <td><strong>Conseil (hint)</strong></td>
-        <td>Bouton "Conseil" en débat</td>
+        <td>Bouton "Conseil"</td>
         <td>0.5</td>
-        <td>Équilibre entre créativité et pertinence du conseil</td>
+        <td>Équilibre créativité / pertinence</td>
         <td>1–2 phrases d'amélioration</td>
       </tr>
       <tr>
         <td><strong>Fact-checking</strong></td>
         <td>À la demande</td>
         <td><span class="green">0.2</span></td>
-        <td>Temp. très basse = fiabilité factuelle maximale</td>
+        <td>Fiabilité factuelle maximale</td>
         <td>Vrai / Faux / Partiel + explication</td>
       </tr>
     </tbody>
   </table>
-  <p style="font-size:.5em; color:#666; margin-top:14px; text-align:center;">
-    Source unique : <strong style="color:#aaa;">src/lib/prompts.ts</strong> · Appels Groq encapsulés dans <strong style="color:#aaa;">src/lib/groq.ts</strong> · Bilingues FR/EN · Mode stub si <code>DISABLE_IA=true</code>
-  </p>
 </section>

@@ -1,45 +1,29 @@
 ---
-// Slide 06 — Serveur WebSocket
 ---
 <section style="font-size:.85em;">
   <span class="slide-tag">Temps réel</span>
   <h2>Serveur <span class="accent">WebSocket</span> custom</h2>
 
-  <div class="cols-2" style="margin-top:12px; align-items:start;">
-    <div>
-      <p style="font-size:.52em; color:#888; text-transform:uppercase; letter-spacing:.1em; margin-bottom:8px;">2 décisions architecturales clés</p>
-      <div class="card gold" style="margin-bottom:8px;">
-        <h3>1. Broadcast avant écriture DB</h3>
-        Le message est diffusé aux clients <strong>avant</strong> la persistance en base. Priorité à la latence perçue sur la cohérence stricte : l'erreur DB est loggée sans bloquer l'UX
-      </div>
-      <div class="card green">
-        <h3>2. Heartbeat ping/pong — 15s</h3>
-        Détection et terminaison des connexions zombies pour éviter l'accumulation de clients stales en mémoire et détecter des déconnexions.
-      </div>
-    </div>
-    <div>
-      <p style="font-size:.52em; color:#888; text-transform:uppercase; letter-spacing:.1em; margin-bottom:8px;">Protocole — messages gérés</p>
-      <pre class="mermaid" style="font-size:.68em;">
-graph TD
-    jq["join_queue\n(mode, ELO)"]
-    matched["matched\n(debateId)"]
-    join["join\n(debateId)"]
-    msg["message\n(content)"]
-    tc["turn_changed"]
-    nm["new_message"]
-    to["timeout"]
-    de["debate_ended"]
-    cq["cancel_queue"]
+  <pre class="mermaid" style="font-size:.8em; margin-top:10px;">
+graph LR
+    jq["join_queue"] -->|match trouvé| matched["matched"]
+    jq -->|annulation| cq["cancel_queue"]
+    matched --> join["join"]
+    join --> msg["message"]
+    msg --> tc["turn_changed"]
+    tc --> nm["new_message"]
+    msg -->|inactif| to["timeout"]
+    nm -->|fin| de["debate_ended"]
+  </pre>
 
-    jq -->|match trouvé| matched
-    jq -->|annulation| cq
-    matched --> join
-    join --> msg
-    msg --> tc
-    tc --> nm
-    msg --> to
-    nm --> de
-      </pre>
+  <div class="cols-2" style="margin-top:10px;">
+    <div class="card gold">
+      <h3>1. Broadcast avant écriture DB</h3>
+      Le message est diffusé aux clients <strong>avant</strong> la persistance en base. Priorité à la latence perçue sur la cohérence stricte, l'erreur DB est loggée sans bloquer l'UX
+    </div>
+    <div class="card green">
+      <h3>2. Heartbeat ping/pong 15s</h3>
+      Détection et terminaison des connexions zombies, évite l'accumulation de clients stales en mémoire et permet de détecter les déconnexions
     </div>
   </div>
 </section>

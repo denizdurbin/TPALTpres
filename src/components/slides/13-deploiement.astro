@@ -1,49 +1,41 @@
 ---
-// Slide 13 — Déploiement & CI/CD
 ---
 <section style="font-size:.85em;">
   <span class="slide-tag">Infrastructure</span>
   <h2>Déploiement &amp; <span class="accent">CI/CD</span></h2>
 
-  <div class="cols-2" style="margin-top:12px; align-items:start;">
-    <div>
-      <p style="font-size:.52em; color:#888; text-transform:uppercase; letter-spacing:.1em; margin-bottom:6px;">Pipeline de déploiement</p>
-      <pre class="mermaid" style="font-size:.7em;">
-graph TD
-    Dev["Dev\ngit push main"]
-    GH["GitHub"]
-    Coolify["Coolify\n(self-hosted PaaS)"]
-    VPS["VPS perso\nDocker"]
-    Traefik["Traefik\nreverse proxy + SSL"]
-    CF["Cloudflare Tunnel"]
-    User["Utilisateur\nHTTPS"]
+  <div style="font-size:.5em; color:#888; text-transform:uppercase; letter-spacing:.1em; margin:6px 0 2px;">Pipeline CI/CD</div>
+  <pre class="mermaid" style="font-size:.9em;">
+graph LR
+    Dev["Dev"] -->|git push main| GH["GitHub"]
+    GH -->|webhook| Coolify["Coolify"]
+    Coolify -->|docker build + deploy| VPS["VPS · Docker"]
+  </pre>
 
-    Dev -->|push| GH
-    GH -->|webhook| Coolify
-    Coolify -->|docker build + deploy| VPS
-    VPS --> Traefik
-    Traefik --> CF
-    CF -->|domaine + DDoS| User
-      </pre>
+  <div style="font-size:.5em; color:#888; text-transform:uppercase; letter-spacing:.1em; margin:6px 0 2px;">Chemin de la requête</div>
+  <pre class="mermaid" style="font-size:.9em;">
+graph LR
+    User["Utilisateur"] -->|HTTPS| CF["Cloudflare Tunnel"]
+    CF -->|masque IP · DDoS| Traefik["Traefik"]
+    Traefik -->|reverse proxy + SSL| VPS2["VPS · Docker"]
+  </pre>
+
+  <div class="cols-2" style="margin-top:6px;">
+    <div class="card blue">
+      <h3>🚀 Coolify</h3>
+      Self-hosted PaaS — CI/CD automatique sur chaque <code>git push main</code> via GitHub webhook
     </div>
-    <div>
-      <div class="card blue" style="margin-bottom:8px;">
-        <h3>🚀 Coolify</h3>
-        Self-hosted PaaS — CI/CD automatique sur chaque <code>git push main</code> via GitHub webhook
-      </div>
-      <div class="card purple" style="margin-bottom:8px;">
-        <h3>↔️ Traefik</h3>
-        Reverse proxy · SSL Let's Encrypt automatique · Routage vers le conteneur Docker
-      </div>
-      <div class="card gold" style="margin-bottom:8px;">
-        <h3>☁️ Cloudflare Tunnel</h3>
-        IP personnelle non exposée publiquement · Protection DDoS · Nom de domaine sans port-forwarding
-      </div>
-      <div class="card green">
-        <h3>🗄️ DB dev → prod</h3>
-        SQLite en dev · <strong>PostgreSQL</strong> en prod<br/>
-        Même schéma Prisma seul <code>DATABASE_URL</code> change
-      </div>
+    <div class="card gold">
+      <h3>☁️ Cloudflare Tunnel</h3>
+      IP non exposée · DDoS · SSL · domaine sans port-forwarding
+    </div>
+    <div class="card purple">
+      <h3>↔️ Traefik</h3>
+      Reverse proxy + SSL Let's Encrypt automatique
+    </div>
+    <div class="card green">
+      <h3>🗄️ DB dev → prod</h3>
+      SQLite dev · <strong>PostgreSQL</strong> prod — seul <code>DATABASE_URL</code> change
     </div>
   </div>
 </section>

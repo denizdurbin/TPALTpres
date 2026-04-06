@@ -1,9 +1,7 @@
 ---
-// Slide 09 — Arbitrage live
-// Note: literal curly braces use HTML entities &#123; &#125;
 ---
 <section>
-  <span class="slide-tag">Intelligence Artificielle — Évaluation en direct</span>
+  <span class="slide-tag">Intelligence Artificielle : Évaluation en direct</span>
   <h2>Arbitrage <span class="accent">message par message</span></h2>
   <div class="cols-2" style="margin-top:8px; align-items:start;">
     <div>
@@ -15,17 +13,7 @@
       </div>
       <div class="card blue" style="margin-bottom:8px;">
         <h3>📐 Règle de portée (absolue)</h3>
-        Les événements ne concernent <strong>que</strong> le message courant —<br/>
-        <code>context_history</code> fourni uniquement pour la cohérence conversationnelle, jamais jugé
-      </div>
-      <div class="prompt-box" style="font-size:.47em;">
-        <span class="cmt">// Output JSON schématique</span><br/>
-        &#123;<br/>
-        &nbsp;&nbsp;<span class="str">"move_quality"</span>: <span class="str">"brilliant|excellent|good|inaccuracy|mistake|blunder"</span>,<br/>
-        &nbsp;&nbsp;<span class="str">"events"</span>: [ &#123; type, severity, description &#125; ],<br/>
-        &nbsp;&nbsp;<span class="str">"score_update"</span>: &#123; player, delta, new_score &#125;,<br/>
-        &nbsp;&nbsp;<span class="str">"live_metrics"</span>: &#123; clarity, logic, strategic_value &#125;<br/>
-        &#125;
+        Les événements ne concernent <strong>que</strong> le message courant, le <code>context_history</code> est fourni uniquement pour la cohérence conversationnelle, jamais jugé
       </div>
     </div>
     <div>
@@ -77,6 +65,12 @@
         <div class="mq-label" style="color:#fca5a5;">wrong_side</div>
         <div class="mq-bar-bg"><div class="mq-bar" style="width:10%;background:#7f1d1d;"></div></div>
         <div class="mq-delta" style="color:#fca5a5;">−10</div>
+      </div>
+      <div class="prompt-box" style="font-size:.35em; margin-top:10px;">
+        &nbsp;&nbsp;<span class="str">"move_quality"</span>: <span class="str">"brilliant|excellent|good|inaccuracy|mistake|blunder"</span>,<br/>
+        &nbsp;&nbsp;<span class="str">"events"</span>: [ &#123; type, severity, description &#125; ],<br/>
+        &nbsp;&nbsp;<span class="str">"score_update"</span>: &#123; player, delta, new_score &#125;,<br/>
+        &nbsp;&nbsp;<span class="str">"live_metrics"</span>: &#123; clarity, logic, strategic_value &#125;<br/>
       </div>
     </div>
   </div>
