@@ -15,7 +15,7 @@ header-includes:
    \begin{center}
        \vspace*{1cm}
 
-       \Large \textbf{Projet 3 DAAR 2025}
+       \Large \textbf{Projet TPALT 2026}
 
        \vspace{1cm}
 
